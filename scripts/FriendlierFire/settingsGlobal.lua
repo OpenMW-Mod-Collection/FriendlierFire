@@ -73,3 +73,21 @@ I.Settings.registerGroup {
         },
     }
 }
+
+I.Settings.registerGroup {
+    key = 'SettingsFriendlierFire_other',
+    page = 'FriendlierFire',
+    l10n = 'FriendlierFire',
+    name = 'other_groupName',
+    permanentStorage = true,
+    order = 3,
+    settings = {
+        {
+            key = 'immortalFollowers',
+            name = 'immortalFollowers_name',
+            description = 'immortalFollowers_description',
+            renderer = 'checkbox',
+            default = true,
+        },
+    }
+}
