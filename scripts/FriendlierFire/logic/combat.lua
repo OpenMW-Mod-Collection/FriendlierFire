@@ -21,6 +21,7 @@ function AttackHandler(attack)
     if attack.successful then
         attack.damage.health = (attack.damage.health or 0) * settings:get("hpDamageMultiplier")
         attack.damage.fatigue = (attack.damage.fatigue or 0) * settings:get("fatDamageMultiplier")
+        attack.damage.magicka = (attack.damage.magicka or 0) * settings:get("magDamageMultiplier")
     end
 end
 

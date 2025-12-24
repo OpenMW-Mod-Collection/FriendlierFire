@@ -31,12 +31,20 @@ I.Settings.registerGroup {
             min = 0,
         },
         {
-            key = 'disableSpells',
-            name = 'disableSpells_name',
-            description = 'disableSpells_description',
-            renderer = 'checkbox',
-            default = true,
+            key = 'magDamageMultiplier',
+            name = 'magDamageMultiplier_name',
+            renderer = 'number',
+            integer = false,
+            default = .33,
+            min = 0,
         },
+        -- {
+        --     key = 'disableSpells',
+        --     name = 'disableSpells_name',
+        --     description = 'disableSpells_description',
+        --     renderer = 'checkbox',
+        --     default = true,
+        -- },
     }
 }
 
@@ -65,29 +73,37 @@ I.Settings.registerGroup {
             min = 0,
         },
         {
-            key = 'disableSpells',
-            name = 'disableSpells_name',
-            description = 'disableSpells_description',
-            renderer = 'checkbox',
-            default = true,
+            key = 'magDamageMultiplier',
+            name = 'magDamageMultiplier_name',
+            renderer = 'number',
+            integer = false,
+            default = .33,
+            min = 0,
         },
+        -- {
+        --     key = 'disableSpells',
+        --     name = 'disableSpells_name',
+        --     description = 'disableSpells_description',
+        --     renderer = 'checkbox',
+        --     default = true,
+        -- },
     }
 }
 
-I.Settings.registerGroup {
-    key = 'SettingsFriendlierFire_other',
-    page = 'FriendlierFire',
-    l10n = 'FriendlierFire',
-    name = 'other_groupName',
-    permanentStorage = true,
-    order = 3,
-    settings = {
-        {
-            key = 'immortalFollowers',
-            name = 'immortalFollowers_name',
-            description = 'immortalFollowers_description',
-            renderer = 'checkbox',
-            default = true,
-        },
-    }
-}
+-- I.Settings.registerGroup {
+--     key = 'SettingsFriendlierFire_other',
+--     page = 'FriendlierFire',
+--     l10n = 'FriendlierFire',
+--     name = 'other_groupName',
+--     permanentStorage = true,
+--     order = 3,
+--     settings = {
+--         {
+--             key = 'immortalFollowers',
+--             name = 'immortalFollowers_name',
+--             description = 'immortalFollowers_description',
+--             renderer = 'checkbox',
+--             default = true,
+--         },
+--     }
+-- }

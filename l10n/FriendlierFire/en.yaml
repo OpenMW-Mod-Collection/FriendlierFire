@@ -5,6 +5,7 @@ playerToFollowers_groupName: Player -> Followers Attacks
 disableAggro_name: Disable Aggro
 hpDamageMultiplier_name: Health Damage Multiplier
 fatDamageMultiplier_name: Fatigue Damage Multiplier
+magDamageMultiplier_name: Magicka Damage Multiplier
 disableSpells_name: Disable negative Spells
 disableAggro_description: |
   Includes spells having Destruction and Mysticism effects.
