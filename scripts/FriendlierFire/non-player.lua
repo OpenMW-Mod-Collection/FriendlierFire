@@ -13,9 +13,9 @@ local function onUpdate()
 end
 
 return {
-    engineHandlers = {
-        onUpdate = onUpdate,
-    },
+    -- engineHandlers = {
+    --     onUpdate = onUpdate,
+    -- },
     eventHandlers = {
         StopAttackingLeader = StopAttackingLeader,
     },

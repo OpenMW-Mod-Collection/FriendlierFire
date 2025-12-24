@@ -4,13 +4,15 @@ Rebeling followers begone!
 
 *For MWSE alternative check out [No More Friendly Fire](https://www.nexusmods.com/morrowind/mods/48801) by Celediel.*
 
-Followers no longer will be able to aggro on you. Period.
+## What It Does
 
-Also allows you increase or decrease health and fatigue damage to and from your followers.
+- Prevents followers from aggroing at you.
+- Reduces physical player-to-follower damage and vice versa (configurable).
 
-## Limitations
+## What It Doesn't (yet)
 
-Doesn't affect damage/multitude from spells and enchantments.
+- Affect spells/enchantments.
+- Make followers immortal.
 
 ## Consider also
 
@@ -19,6 +21,6 @@ Doesn't affect damage/multitude from spells and enchantments.
 
 ## Credits
 
-**Sosnoviy Bor** - Author
-**S3ctor** - Valuable knowledge
+**Sosnoviy Bor** - Author  
+**S3ctor** - Valuable knowledge  
 **Glittergear and the Guarlings** - Creating [Caswyn - A Nightmare's Favor](https://www.nexusmods.com/morrowind/mods/55505) which inspired me in the first place. Good mod, give it a shot

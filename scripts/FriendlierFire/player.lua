@@ -18,9 +18,9 @@ local function targetsChanged(data)
 end
 
 return {
-    engineHandlers = {
-        onUpdate = onUpdate,
-    },
+    -- engineHandlers = {
+    --     onUpdate = onUpdate,
+    -- },
     eventHandlers = {
         OMWMusicCombatTargetsChanged = targetsChanged,
     },
