@@ -1,5 +1,11 @@
 # Friendlier Fire (OpenMW)
 
+## 1.0.3
+
+### Fixes
+
+- Fixed enemy summons not attacking the player (fr this time)
+
 ## 1.0.2
 
 ### Fixes

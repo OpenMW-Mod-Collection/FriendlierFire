@@ -1,14 +1,11 @@
-local I = require('openmw.interfaces')
 local storage = require('openmw.storage')
 
-require("scripts.FriendlierFire.logic.combat")
+-- require("scripts.FriendlierFire.logic.spells")
 
-I.Combat.addOnHitHandler(AttackHandler)
 local sectionPtF = storage.globalSection('SettingsFriendlierFire_playerToFollowers')
 
 local function onUpdate()
-    if not sectionPtF:get("disableSpells") then return end
-    UpdateSpells()
+    if sectionPtF:get("disableSpells") then SpellUpdate() end
 end
 
 local function targetsChanged(data)

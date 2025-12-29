@@ -1,11 +1,10 @@
 local self = require('openmw.self')
 local types = require('openmw.types')
 local storage = require('openmw.storage')
+local I = require('openmw.interfaces')
 
 require("scripts.FriendlierFire.logic.ai")
 require("scripts.FriendlierFire.utils.tables")
-
-local activeSpells = {}
 
 local selfToSettings = {
     [types.Player]   = storage.globalSection('SettingsFriendlierFire_followersToPlayer'),
@@ -14,7 +13,9 @@ local selfToSettings = {
 }
 
 function AttackHandler(attack)
-    if not (FollowsPlayer(attack.attacker) or self.type == types.Player) then return end
+    local followsPlayer = I.FriendlierFire_nonPlayer.followsPlayer()
+    local isPlayer = self.type == types.Player
+    if not (followsPlayer or isPlayer) then return end
 
     local settings = selfToSettings[self.type]
 
@@ -23,28 +24,4 @@ function AttackHandler(attack)
         attack.damage.fatigue = (attack.damage.fatigue or 0) * settings:get("fatDamageMultiplier")
         attack.damage.magicka = (attack.damage.magicka or 0) * settings:get("magDamageMultiplier")
     end
-end
-
-function UpdateSpells()
-    -- DOESN'T WORK YET
-    local currSpells = {}
-    ShallowCopy(self.type.activeSpells(self), currSpells)
-    print(TablesAreSame(currSpells, activeSpells))
-    if TablesAreSame(currSpells, activeSpells) then return end
-
-    local newSpells = ListDifference(currSpells, activeSpells)
-    if #newSpells == 0 or not newSpells then
-        ShallowCopy(currSpells, activeSpells)
-        return
-    end
-
-    for _, spell in ipairs(newSpells) do
-        -- print("Checking spell:", spell)
-        if spell.caster and (self.type == types.Player or FollowsPlayer(spell.caster)) then
-            -- print("Removing spell from follower to player:", spell.recordId)
-        end
-    end
-    
-    activeSpells = {}
-    ShallowCopy(currSpells, activeSpells)
 end

@@ -2,29 +2,30 @@ local I = require('openmw.interfaces')
 local self = require('openmw.self')
 local types = require('openmw.types')
 
-function FollowsPlayer(player)
-    if self.type == types.Player then
-        return false
-    end
-
+function GetLeader()
     local followedActor
-    I.AI.forEachPackage(function (pkg)
+    I.AI.forEachPackage(function(pkg)
         if pkg.type == "Follow" then
             followedActor = pkg.target
             return
         end
     end)
+    return followedActor
+end
 
-    local followsPlayer = followedActor == player
+function FollowsPlayer()
+    local followedActor = GetLeader()
+    if not followedActor then return false end
+
+    local followsPlayer = followedActor.type == types.Player
     local isSummon = string.find(self.recordId, "_summon$")
         or string.find(self.recordId, "_summ$")
 
-    local isFollowersSummon = false
     if not followsPlayer and isSummon then
-        isFollowersSummon = FollowsPlayer(followedActor)
+        followedActor:sendEvent("Summon_CheckSummonersLeader", { sender = self })
     end
 
-    return followsPlayer or isFollowersSummon
+    return followsPlayer
 end
 
 local function AttackPlayerFilter(pkg)
@@ -33,13 +34,12 @@ end
 
 function StopAttackingLeader(data)
     if AttackPlayerFilter({ type = "Combat", target = data.target }) then
-        return false
+        return
     end
 
-    if FollowsPlayer(data.target) then
+    if I.FriendlierFire_nonPlayer.followsPlayer() then
         I.AI.filterPackages(AttackPlayerFilter)
-        return true
-    else
-        return false
+        -- print("Friendlier Fire: Stopped attacking ".. self.recordId .."'s leader.")
+        return
     end
 end
