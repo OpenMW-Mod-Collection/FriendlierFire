@@ -6,6 +6,10 @@
 
 - Fixed enemy summons not attacking the player (fr this time)
 
+### Features
+
+- Imroved performance due to change in follower packages tracking
+
 ## 1.0.2
 
 ### Fixes

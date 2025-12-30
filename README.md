@@ -20,6 +20,7 @@ Rebelling followers begone!
 ## Consider also
 
 - [Attend Me](https://www.nexusmods.com/morrowind/mods/51232) by urm - Follower HUD and teleportation.
+- [Actor Interactions - OpenMW](https://www.nexusmods.com/morrowind/mods/57955) by Implawyer - Adds UI window to give items, teach spells, feed, and dress up your favorite npc.
 - [Rapport - OpenMW Companions](https://www.nexusmods.com/morrowind/mods/54132) by LargeOuterReap - Hire any NPC to join you as a companion. Additional features included.
 
 ## Credits
