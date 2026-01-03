@@ -1,6 +1,7 @@
 local storage = require('openmw.storage')
+local self = require("openmw.self")
 
--- require("scripts.FriendlierFire.logic.spells")
+require("scripts.FriendlierFire.actorCommon")
 
 local sectionPtF = storage.globalSection('SettingsFriendlierFire_playerToFollowers')
 
@@ -8,10 +9,8 @@ local function onUpdate()
     if sectionPtF:get("disableSpells") then SpellUpdate() end
 end
 
-local function targetsChanged(data)
-    for _, target in ipairs(data.targets) do
-        data.actor:sendEvent("StopAttackingLeader", { target = target })
-    end
+local function localEnemyTargetsChanged(data)
+    data.actor:sendEvent("StopAttackingLeader", { target = self })
 end
 
 return {
@@ -19,6 +18,6 @@ return {
     --     onUpdate = onUpdate,
     -- },
     eventHandlers = {
-        OMWMusicCombatTargetsChanged = targetsChanged,
-    },
+        OMWMusicCombatTargetsChanged = localEnemyTargetsChanged
+    }
 }

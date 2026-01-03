@@ -14,8 +14,14 @@ Rebelling followers begone!
 
 ## What It Doesn't (yet)
 
+- Stop followers fighting each other
 - Affect spells/enchantments
-- Make followers immortal
+
+## Requirements
+
+**Load dependencies before this mod!**
+
+- Follower Detection Util (link will be added later)
 
 ## Consider also
 

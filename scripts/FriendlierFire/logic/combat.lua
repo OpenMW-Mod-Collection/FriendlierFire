@@ -3,9 +3,6 @@ local types = require('openmw.types')
 local storage = require('openmw.storage')
 local I = require('openmw.interfaces')
 
-require("scripts.FriendlierFire.logic.ai")
-require("scripts.FriendlierFire.utils.tables")
-
 local selfToSettings = {
     [types.Player]   = storage.globalSection('SettingsFriendlierFire_followersToPlayer'),
     [types.NPC]      = storage.globalSection('SettingsFriendlierFire_playerToFollowers'),
@@ -13,7 +10,8 @@ local selfToSettings = {
 }
 
 function AttackHandler(attack)
-    local followsPlayer = I.FriendlierFire_nonPlayer.followsPlayer()
+    local state = I.FollowerDetectionUtil.getState()
+    local followsPlayer = state.followsPlayer
     local isPlayer = self.type == types.Player
     if not (followsPlayer or isPlayer) then return end
 

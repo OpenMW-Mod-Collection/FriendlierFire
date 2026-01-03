@@ -1,3 +1,6 @@
+dependency_missing: >
+  "[{mainMod}] ERROR: Dependency {dependency} is either missing or loaded after the {mainMod}."
+
 page_name: Friendlier Fire
 page_description: Less stressful follower combat experience.
 
