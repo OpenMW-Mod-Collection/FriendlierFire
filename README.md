@@ -10,11 +10,11 @@ Rebelling followers begone!
   - NPC/creature followers
   - Player's summons
   - Follower's summons
+- Stops followers from fighting each other [NEEDS TESTING]
 - Reduces physical player-to-follower damage and vice versa (configurable)
 
 ## What It Doesn't (yet)
 
-- Stop followers fighting each other
 - Affect spells/enchantments
 
 ## Requirements
