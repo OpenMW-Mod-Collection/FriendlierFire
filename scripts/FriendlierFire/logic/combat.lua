@@ -9,17 +9,37 @@ local selfToSettings = {
     [types.Creature] = storage.globalSection('SettingsFriendlierFire_playerToFollowers'),
 }
 
-function AttackHandler(attack)
+local function playerAttackFilter(attack)
+    local followerList = I.FollowerDetectionUtil.getFollowerList()
+    return not followerList[attack.attacker.id]
+end
+
+local function actorAttackFilter(attack)
     local state = I.FollowerDetectionUtil.getState()
+    local followerList = I.FollowerDetectionUtil.getFollowerList()
+
     local followsPlayer = state.followsPlayer
-    local isPlayer = self.type == types.Player
-    if not (followsPlayer or isPlayer) then return end
+    local attackedByPlayer = attack.attacker.type == types.Player
+    local attackedByFollower = followerList[attack.attacker.id] ~= nil
+
+    return not (followsPlayer and (attackedByPlayer or attackedByFollower))
+end
+
+local selfToAttackFilter = {
+    [types.Player]   = playerAttackFilter,
+    [types.NPC]      = actorAttackFilter,
+    [types.Creature] = actorAttackFilter,
+}
+
+function AttackHandler(attack)
+    if not attack.successful or not attack.attacker then return end
+
+    local attackFilter = selfToAttackFilter[self.type]
+    if attackFilter(attack) then return end
 
     local settings = selfToSettings[self.type]
 
-    if attack.successful then
-        attack.damage.health = (attack.damage.health or 0) * settings:get("hpDamageMultiplier")
-        attack.damage.fatigue = (attack.damage.fatigue or 0) * settings:get("fatDamageMultiplier")
-        attack.damage.magicka = (attack.damage.magicka or 0) * settings:get("magDamageMultiplier")
-    end
+    attack.damage.health = (attack.damage.health or 0) * settings:get("hpDamageMultiplier")
+    attack.damage.fatigue = (attack.damage.fatigue or 0) * settings:get("fatDamageMultiplier")
+    attack.damage.magicka = (attack.damage.magicka or 0) * settings:get("magDamageMultiplier")
 end

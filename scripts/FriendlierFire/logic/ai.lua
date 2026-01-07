@@ -4,18 +4,18 @@ local storage = require('openmw.storage')
 
 local sectionOther = storage.globalSection('SettingsFriendlierFire_other')
 
-local function AttackPlayerFilter(pkg)
+local function AttackPlayerPkgFilter(pkg)
     return not (pkg.type == "Combat" and pkg.target.type == types.Player)
 end
 
 local function stopAttackingPlayer(data)
-    if AttackPlayerFilter({ type = "Combat", target = data.target }) then
+    if AttackPlayerPkgFilter({ type = "Combat", target = data.target }) then
         return
     end
 
     local state = I.FollowerDetectionUtil.getState()
     if state.followsPlayer then
-        I.AI.filterPackages(AttackPlayerFilter)
+        I.AI.filterPackages(AttackPlayerPkgFilter)
     end
 end
 
