@@ -33,7 +33,10 @@ function UpdateActiveSpells()
     local newSpells = {}
 
     for _, spell in pairs(currActiveSpells) do
-        if isFriendlyFire(spell, followers) and spellIsHarmful(spell) then
+        if spell.temporary
+            and isFriendlyFire(spell, followers)
+            and spellIsHarmful(spell)
+        then
             table.insert(newSpells, spell)
         end
     end
