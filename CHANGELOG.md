@@ -2,10 +2,13 @@
 
 ## 2.0
 
+**As of this update, the mod requires Follower Detection Util to work!**
+
 ### Features
 
-- Incorporation of Follower Detection Util for (I shit you not) follower detection
-- Followers no longer aggro onto each other [NEEDS TESTING]
+- Added Follower Detection Util dependency
+- Followers no longer aggro onto each other
+- Added spell handling. You and your followers no longer harm each other with spells
 
 ## 1.0.3
 

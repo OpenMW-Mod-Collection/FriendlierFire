@@ -23,7 +23,7 @@ Rebelling followers begone!
 
 **Load dependencies before this mod!**
 
-- Follower Detection Util
+- [Follower Detection Util](https://www.nexusmods.com/morrowind/mods/58053)
 
 ## Consider also
 
