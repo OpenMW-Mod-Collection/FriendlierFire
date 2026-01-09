@@ -1,5 +1,11 @@
 # Friendlier Fire (OpenMW)
 
+## 2.0.1
+
+### Fixes
+
+- Fixed a crash on receiving target change without a target (yeah, idk how that happens either)
+
 ## 2.0
 
 **As of this update, the mod requires Follower Detection Util to work!**
