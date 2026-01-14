@@ -20,7 +20,8 @@ local function actorAttackFilter(attack)
 
     local followsPlayer = state.followsPlayer
     local attackedByPlayer = attack.attacker.type == types.Player
-    local attackedByFollower = followerList[attack.attacker.id] ~= nil
+    local attackerState = followerList[attack.attacker.id]
+    local attackedByFollower = attackerState and attackerState.followsPlayer
 
     return not (followsPlayer and (attackedByPlayer or attackedByFollower))
 end

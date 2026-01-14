@@ -12,7 +12,7 @@ CheckDependencies(self, {
 I.Combat.addOnHitHandler(AttackHandler)
 
 local sectionOther = storage.globalSection('SettingsFriendlierFire_other')
-local hasFollowers = next(I.FollowerDetectionUtil.getFollowerList()) ~= nil
+local hasFollowers = false
 
 local function onUpdate()
     if sectionOther:get("disableSpells") and hasFollowers then
@@ -26,8 +26,16 @@ local function localEnemyTargetChanged(data)
 end
 
 local function updateFollowerStatus(data)
-    hasFollowers = next(data.followers) ~= nil
+    for _, state in pairs(data.followers) do
+        if state.followsPlayer then
+            hasFollowers = true
+            return
+        end
+    end
+    hasFollowers = false
 end
+
+updateFollowerStatus({ followers = I.FollowerDetectionUtil.getFollowerList() })
 
 return {
     engineHandlers = {

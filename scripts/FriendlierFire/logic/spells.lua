@@ -7,12 +7,14 @@ local function isFriendlyFire(spell, followers)
     if not spell.caster then return false end
 
     local castByPlayer = spell.caster.type == types.Player
-    local castByFollower = followers[spell.caster.id] ~= nil
+    local casterState = followers[spell.caster.id]
+    local castByFollower = casterState and casterState.followsPlayer
     local casterIsSelf = spell.caster.id == self.id
     local casterIsFriendly = (castByFollower or castByPlayer) and not casterIsSelf
 
     local victimIsPlayer = self.type == types.Player
-    local victimIsFollower = followers[self.id] ~= nil
+    local victimState = followers[self.id]
+    local victimIsFollower = victimState and victimState.followsPlayer
     local victimIsFriendly = victimIsFollower or victimIsPlayer
 
     return casterIsFriendly and victimIsFriendly
@@ -46,7 +48,7 @@ end
 
 function RemoveFriendlyHarmfulSpells(newSpells)
     if not next(newSpells) then return end
-    
+
     local activeSpells = self.type.activeSpells(self)
     for _, spell in ipairs(newSpells) do
         activeSpells:remove(spell.activeSpellId)

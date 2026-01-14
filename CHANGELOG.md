@@ -1,5 +1,14 @@
 # Friendlier Fire (OpenMW)
 
+## 2.1
+
+**Requires Follower Detection Util version 1.1 to work! Please update it!**
+
+### Changes
+
+- Migrated codebase to FDU 1.1
+- Maybe improved performance as a result
+
 ## 2.0.1
 
 ### Fixes
@@ -24,7 +33,7 @@
 
 ### Features
 
-- Imroved performance due to change in follower packages tracking
+- Improved performance due to change in follower packages tracking
 
 ## 1.0.2
 

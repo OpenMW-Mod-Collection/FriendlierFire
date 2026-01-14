@@ -17,7 +17,8 @@ end
 
 local function stopAttackingFollower(data)
     local followers = I.FollowerDetectionUtil.getFollowerList()
-    if not followers[data.target.id] then return end
+    local targetState = followers[data.target.id]
+    if not (targetState and targetState.followsPlayer) then return end
 
     I.AI.filterPackages(function(pkg)
         return not (pkg.type == "Combat" and followers[pkg.target.id])
