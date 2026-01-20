@@ -1,21 +1,11 @@
-dependency_missing: >
-  "[{mainMod}] ERROR: Dependency {dependency} is either missing or loaded after the {mainMod}."
-
 page_name: Friendlier Fire
 page_description: Less stressful follower combat experience.
 
-playerToFollowers_groupName: Player -> Followers Attacks
-hpDamageMultiplier_name: Health Damage Multiplier
-fatDamageMultiplier_name: Fatigue Damage Multiplier
-magDamageMultiplier_name: Magicka Damage Multiplier
+settings_groupName: Settings
+damageMult_name: Physical Damage Multiplier
+damageMult_desc: |
+  Applies to both health and fatigue damage.
+  
+  Set it to -1 to make attacks always miss.
 disableSpells_name: Disable Negative Spells
-
-followersToPlayer_groupName: Followers -> Player Attacks
-
-other_groupName: Other
 disableAggro_name: Disable Aggro
-disableAggro_description: |
-  Includes:
-  - Follower -> Player
-  - Follower's summon -> Player
-  - Follower -> Follower

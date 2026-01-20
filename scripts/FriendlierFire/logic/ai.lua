@@ -2,7 +2,7 @@ local I = require('openmw.interfaces')
 local types = require('openmw.types')
 local storage = require('openmw.storage')
 
-local sectionOther = storage.globalSection('SettingsFriendlierFire_other')
+local settings = storage.globalSection('SettingsFriendlierFire_settings')
 
 local function stopAttackingPlayer(data)
     if data.target.type ~= types.Player then return end
@@ -26,7 +26,7 @@ local function stopAttackingFollower(data)
 end
 
 function TargetChanged(data)
-    if not sectionOther:get("disableAggro") or not data.target then return end
+    if not settings:get("disableAggro") or not data.target then return end
     stopAttackingPlayer(data)
     stopAttackingFollower(data)
 end

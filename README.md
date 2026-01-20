@@ -6,24 +6,19 @@ Rebelling followers begone!
 
 ## What It Does
 
-- Prevents any followers from aggroing at you. Includes:
-  - NPC/creature followers
-  - Player's summons
-  - Follower's summons
-- Stops followers from fighting each other
+- Prevents any followers from aggroing at you and at each other
+- Makes friendly physical attacks always miss or deal reduced damage
 - Prevents you and your followers from harming each other with spells
-- Reduces physical player-to-follower damage and vice versa (configurable)
 
 ## Shortcomings
 
 - While the spells are disabled as soon as they are detected, they still manage to inflict a sliver of damage and trigger a red vignette. They might get you killed if you're at 1 HP, but otherwise it's barely noticeable.
-- When followers try to aggro on you, they still shout their combat line.
 
 ## Requirements
 
 **Load dependencies before this mod!**
 
-- [Follower Detection Util](https://www.nexusmods.com/morrowind/mods/58053)
+- [Follower Detection Util](https://www.nexusmods.com/morrowind/mods/58053) version 1.1.1 or newer
 
 ## Consider also
 

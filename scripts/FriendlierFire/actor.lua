@@ -8,11 +8,11 @@ require("scripts.FriendlierFire.logic.ai")
 
 I.Combat.addOnHitHandler(AttackHandler)
 
-local sectionOther = storage.globalSection('SettingsFriendlierFire_other')
+local settings = storage.globalSection('SettingsFriendlierFire_settings')
 local isFollower = I.FollowerDetectionUtil.getState().followsPlayer
 
 local function onUpdate()
-    if sectionOther:get("disableSpells") and isFollower then
+    if settings:get("disableSpells") and isFollower then
         local newSpells = UpdateActiveSpells()
         RemoveFriendlyHarmfulSpells(newSpells)
     end

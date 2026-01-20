@@ -1,13 +1,9 @@
-local self = require('openmw.self')
+local selfType = require('openmw.self').type
 local types = require('openmw.types')
 local storage = require('openmw.storage')
 local I = require('openmw.interfaces')
 
-local selfToSettings = {
-    [types.Player]   = storage.globalSection('SettingsFriendlierFire_followersToPlayer'),
-    [types.NPC]      = storage.globalSection('SettingsFriendlierFire_playerToFollowers'),
-    [types.Creature] = storage.globalSection('SettingsFriendlierFire_playerToFollowers'),
-}
+local settings = storage.globalSection('SettingsFriendlierFire_settings')
 
 local function playerAttackFilter(attack)
     local followerList = I.FollowerDetectionUtil.getFollowerList()
@@ -35,12 +31,11 @@ local selfToAttackFilter = {
 function AttackHandler(attack)
     if not attack.successful or not attack.attacker then return end
 
-    local attackFilter = selfToAttackFilter[self.type]
+    local attackFilter = selfToAttackFilter[selfType]
     if attackFilter(attack) then return end
 
-    local settings = selfToSettings[self.type]
+    if settings:get("damageMult") < 0 then return false end
 
-    attack.damage.health = (attack.damage.health or 0) * settings:get("hpDamageMultiplier")
-    attack.damage.fatigue = (attack.damage.fatigue or 0) * settings:get("fatDamageMultiplier")
-    attack.damage.magicka = (attack.damage.magicka or 0) * settings:get("magDamageMultiplier")
+    attack.damage.health = (attack.damage.health or 0) * settings:get("damageMult")
+    attack.damage.fatigue = (attack.damage.fatigue or 0) * settings:get("damageMult")
 end

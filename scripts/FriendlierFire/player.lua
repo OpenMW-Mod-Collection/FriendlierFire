@@ -6,16 +6,21 @@ require("scripts.FriendlierFire.logic.combat")
 require("scripts.FriendlierFire.logic.spells")
 require("scripts.FriendlierFire.utils.dependencies")
 
-CheckDependencies(self, {
-    ["FollowerDetectionUtil.omwscripts"] = I.FollowerDetectionUtil == nil
-})
+CheckDependency(
+    self,
+    "Friendly Fire",
+    "FollowerDetectionUtil.omwscripts",
+    I.FollowerDetectionUtil,
+    1.11,
+    I.FollowerDetectionUtil and I.FollowerDetectionUtil.version or -1)
+
 I.Combat.addOnHitHandler(AttackHandler)
 
-local sectionOther = storage.globalSection('SettingsFriendlierFire_other')
+local settings = storage.globalSection('SettingsFriendlierFire_settings')
 local hasFollowers = false
 
 local function onUpdate()
-    if sectionOther:get("disableSpells") and hasFollowers then
+    if settings:get("disableSpells") and hasFollowers then
         local newSpells = UpdateActiveSpells()
         RemoveFriendlyHarmfulSpells(newSpells)
     end

@@ -1,5 +1,15 @@
 # Friendlier Fire (OpenMW)
 
+## 2.2
+
+**Requires Follower Detection Util version 1.2 to work! Please update it!**
+
+### Changes
+
+- Simplified settings page
+- Settings Physical Damage Multiplier setting to 0 will make all attacks miss. This should prevent followers from saying their vanilla friendly fire voicelines
+- Improved dependency checking
+
 ## 2.1
 
 **Requires Follower Detection Util version 1.1 to work! Please update it!**
