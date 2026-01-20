@@ -2,7 +2,7 @@
 
 ## 2.2
 
-**Requires Follower Detection Util version 1.2 to work! Please update it!**
+**Requires Follower Detection Util version 1.1.1 to work! Please update it!**
 
 ### Changes
 
