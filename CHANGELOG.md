@@ -1,5 +1,11 @@
 # Friendlier Fire (OpenMW)
 
+## 2.2.1
+
+### Fixes
+
+- Fixed error spam on loading a save
+
 ## 2.2
 
 **Requires Follower Detection Util version 1.1.1 to work! Please update it!**

@@ -23,7 +23,7 @@ local function startAIPackage(pkg)
 end
 
 local function updateFollowerStatus(data)
-    isFollower = data.followers[self.id].followsPlayer
+    isFollower = data.followers[self.id] and data.followers[self.id].followsPlayer or false
 end
 
 return {
