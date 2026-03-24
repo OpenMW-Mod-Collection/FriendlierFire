@@ -2,6 +2,9 @@ local types = require("openmw.types")
 local self = require("openmw.self")
 local I = require("openmw.interfaces")
 local core = require("openmw.core")
+local storage = require("openmw.storage")
+
+local settings = storage.globalSection("SettingsFriendlierFire_settings")
 
 local function isFriendlyFire(spell, followers)
     if not spell.caster then return false end
@@ -21,8 +24,12 @@ local function isFriendlyFire(spell, followers)
 end
 
 local function spellIsHarmful(spell)
+    local allowSoultrap = settings:get("allowSoultrap")
+
     for _, effect in pairs(spell.effects) do
-        if core.magic.effects.records[effect.id].harmful then
+        if core.magic.effects.records[effect.id].harmful
+            and not (effect.id == "soultrap" and allowSoultrap)
+        then
             return true
         end
     end

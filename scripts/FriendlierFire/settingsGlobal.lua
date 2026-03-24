@@ -24,6 +24,13 @@ I.Settings.registerGroup {
             default = true,
         },
         {
+            key = 'allowSoultrap',
+            name = 'allowSoultrap_name',
+            description = 'allowSoultrap_desc',
+            renderer = 'checkbox',
+            default = true,
+        },
+        {
             key = 'disableAggro',
             name = 'disableAggro_name',
             renderer = 'checkbox',

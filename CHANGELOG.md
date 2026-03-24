@@ -1,5 +1,11 @@
 # Friendlier Fire (OpenMW)
 
+## 2.3
+
+### Changes
+
+- Added a setting to not treat Soultrap as a harmful effect
+
 ## 2.2.1
 
 ### Fixes

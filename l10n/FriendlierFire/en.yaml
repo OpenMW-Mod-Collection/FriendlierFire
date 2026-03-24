@@ -7,5 +7,10 @@ damageMult_desc: |
   Applies to both health and fatigue damage.
   
   Set it to -1 to make attacks always miss.
-disableSpells_name: Disable Negative Spells
+disableSpells_name: Disable Harmful Spells
+allowSoultrap_name: Soultrap is not Harmful
+allowSoultrap_desc: |
+  In vanilla it is harmful.
+  
+  Matters only if "Disable Harmful Spells" is enabled.
 disableAggro_name: Disable Aggro
