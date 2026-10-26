@@ -6,10 +6,6 @@ local deps = require("scripts.FriendlierFire.utils.dependencies")
 deps.checkAll("Friendlier Fire", { {
     plugin = "FollowerDetectionUtil.omwscripts",
     interface = I.FollowerDetectionUtil,
-    minVersion = 1.11,
-    curVersion = I.FollowerDetectionUtil
-        and I.FollowerDetectionUtil.version
-        or -1
 } })
 
 require("scripts.FriendlierFire.logic.combat")

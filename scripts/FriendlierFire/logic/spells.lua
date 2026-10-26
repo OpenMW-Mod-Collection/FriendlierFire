@@ -5,24 +5,20 @@ local core = require("openmw.core")
 
 local activeSpells = self.type.activeSpells(self)
 
-local function isFriendlyFire(spell, followers)
-    if not spell.caster then return false end
-
-    local castByPlayer = spell.caster.type == types.Player
-    local casterState = followers[spell.caster.id]
-    local castByFollower = casterState and casterState.followsPlayer
-    local casterIsSelf = spell.caster.id == self.id
-    local casterIsFriendly = (castByFollower or castByPlayer) and not casterIsSelf
-
-    local victimIsPlayer = self.type == types.Player
-    local victimState = followers[self.id]
-    local victimIsFollower = victimState and victimState.followsPlayer
-    local victimIsFriendly = victimIsFollower or victimIsPlayer
-
-    return casterIsFriendly and victimIsFriendly
+local function isAlly(actor, state)
+    if types.Player.objectIsInstance(actor) then return true end
+    return state ~= nil and state.followsPlayer
 end
 
-local function spellIsHarmful(spell)
+local function isFriendlyFire(spell, followers)
+    local caster = spell.caster
+    if not caster or caster.id == self.id then return false end
+
+    return isAlly(caster, followers[caster.id])
+        and isAlly(self, followers[self.id])
+end
+
+local function isHarmful(spell)
     for _, effect in pairs(spell.effects) do
         if core.magic.effects.records[effect.id].harmful then
             return true
@@ -38,7 +34,7 @@ function UpdateActiveSpells()
     for _, spell in pairs(activeSpells) do
         if spell.temporary
             and isFriendlyFire(spell, followers)
-            and spellIsHarmful(spell)
+            and isHarmful(spell)
         then
             table.insert(newSpells, spell)
         end

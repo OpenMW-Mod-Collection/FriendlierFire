@@ -1,5 +1,10 @@
 # Friendlier Fire (OpenMW)
 
+## 2.5.1
+
+- Minor improvements to friendly fire spell detection
+- Spells from a follower's followers still get ignored by the mod (it has to be fixed on FDU side and I'm already working on it)
+
 ## 2.5
 
 - Added actor blacklist by mwscripts
